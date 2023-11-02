@@ -1,2 +1,16 @@
 GET http://localhost:3003/ping
 ###
+
+GET http://localhost:3003/superHeroes
+###
+
+POST http://localhost:3003/superHeroes
+Content-Type: application/json
+
+{
+    "id": "s005",
+    "name": "Wonder Woman",
+    "super_power": "Strength",
+    "overall": 89
+}
+###

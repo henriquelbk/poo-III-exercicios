@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express'
 import cors from 'cors'
+import { SuperHeroesController } from './controller/SuperHeroesController'
 
 const app = express()
 
@@ -27,3 +28,15 @@ app.get("/ping", async (req: Request, res: Response) => {
         }
     }
 })
+
+const superHeroesController = new SuperHeroesController()
+
+// SuperHeroes
+
+app.get("/superHeroes", superHeroesController.getSuperHeroes)
+
+app.post("/superHeroes", superHeroesController.createSuperHero)
+
+app.put("/superHeroes", superHeroesController.updateSuperHero)
+
+// app.delete("/superHeroes/:id", superHeroesController.deleteSuperHero)

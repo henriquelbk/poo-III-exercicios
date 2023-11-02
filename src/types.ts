@@ -1,7 +1,7 @@
 export interface SuperHeroesDB {
     id: string,
     name: string,
-    superPower: string,
+    super_power: string,
     overall: number
 }
 

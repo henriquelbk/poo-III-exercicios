@@ -1,3 +1,4 @@
+import { SuperHeroes } from "../models/SuperHeroes";
 import { SuperHeroesDB } from "../types";
 import { BaseDatabase } from "./BaseDatabase";
 
@@ -23,7 +24,7 @@ export class SuperHeroesDatabase extends BaseDatabase {
         return superHeroesDB
     }
 
-    public async findUserById(id: string) {
+    public async findSuperHeroById(id: string) {
         const [ SuperHeroesDB ]: SuperHeroesDB[] | undefined[] = await BaseDatabase
             .connection(SuperHeroesDatabase.TABLE_SUPERHEROES)
             .where({ id })
@@ -31,9 +32,21 @@ export class SuperHeroesDatabase extends BaseDatabase {
         return SuperHeroesDB
     }
 
-    public async insertUser(newSuperHeroesDB: SuperHeroesDB) {
+    public async insertSuperHero(newSuperHeroesDB: SuperHeroesDB) {
         await BaseDatabase
             .connection(SuperHeroesDatabase.TABLE_SUPERHEROES)
             .insert(newSuperHeroesDB)
+    }
+
+    public async updateSuperHero(id: string) {
+        await BaseDatabase
+            .connection(SuperHeroesDatabase.TABLE_SUPERHEROES)
+            .update(SuperHeroes).where({ id })
+    }
+
+    public async deletetSuperHero(id: string) {
+        await BaseDatabase
+            .connection(SuperHeroesDatabase.TABLE_SUPERHEROES)
+            .delete().where({ id })
     }
 }
